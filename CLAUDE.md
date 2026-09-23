@@ -12,6 +12,13 @@ Streamlit 기반 업비트(pyupbit) 자동매매 봇. RSI/MACD/BBANDS/Stoch/ATR/
 - `binance_fetcher.py` — 바이낸스 선물 펀딩비 조회 (ccxt, 5분 캐시)
 - `7차(5차 완성)/` — 이전 버전 스냅샷 (비교용, 활성 코드 아님)
 
+## 환경 / 의존성
+- 설치된 `streamlit==1.41.1`. `st.button`/`st.dataframe`/`st.plotly_chart`에 **`width='stretch'`
+  문자열 sizing API를 쓰지 말 것** — 이 버전엔 없음 (`st.button`은 즉시 `TypeError`, `st.dataframe`은
+  `width`가 int 전용이라 오동작, `st.plotly_chart`는 `**kwargs`로 조용히 삼켜짐). 항상
+  `use_container_width=True`를 사용할 것 (2026-09-23에 9곳 전부 이 패턴으로 통일함, 커밋 `ca65610`).
+  streamlit을 업그레이드하지 않는 한 이 규칙 유지.
+
 ## API 키 취급
 로컬 환경에서는 `config.json`에 업비트 API 키가 평문으로 있음. **사용자가 이 환경을 로컬에서 혼자만
 사용**하기로 확인했으므로 로컬 파일 자체의 키 로테이션/시크릿 분리는 불필요 — 다시 제안하지 말 것.

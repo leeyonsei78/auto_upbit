@@ -321,7 +321,7 @@ with st.sidebar:
 
 
     # --- 설정 저장 버튼 ---
-    if st.button("💾 설정 저장", type="primary", width='stretch'): # [★수정 6★]
+    if st.button("💾 설정 저장", type="primary", use_container_width=True): # [★수정 6★]
         new_config = {
             'ACCESS_KEY': access_key,
             'SECRET_KEY': secret_key,
@@ -401,7 +401,7 @@ with col1:
     
     c1, c2 = st.columns(2)
     # [★수정 6★]
-    if c1.button("▶️ 봇 시작", width='stretch', type="primary", disabled=(st.session_state.bot_status == "running")):
+    if c1.button("▶️ 봇 시작", use_container_width=True, type="primary", disabled=(st.session_state.bot_status == "running")):
         
         if not access_key or not secret_key:
             st.error("API 키를 먼저 입력하고 저장하세요.")
@@ -437,7 +437,7 @@ with col1:
                 st.session_state.bot_status = "stopped"
 
     # [★수정 6★]
-    if c2.button("⏹️ 봇 정지", width='stretch', type="secondary", disabled=(st.session_state.bot_status != "running")):
+    if c2.button("⏹️ 봇 정지", use_container_width=True, type="secondary", disabled=(st.session_state.bot_status != "running")):
         st.session_state.bot_status = "stopping"
         add_log("🤖 봇을 정지 중입니다...")
         st.toast("봇이 정지 신호를 받았습니다. 현재 작업을 완료하고 종료합니다.")
@@ -623,8 +623,7 @@ with tab_pick:
                                             })
                             return styled_df
 
-                        # [★경고 수정★] use_container_width=True -> width='stretch'
-                        st.dataframe(style_dataframe(recommend_df), width='stretch')
+                        st.dataframe(style_dataframe(recommend_df), use_container_width=True)
                         
                 except Exception as e:
                     st.error(f"코인 스캔 중 예외 발생: {e}")
@@ -649,13 +648,12 @@ with tab_history:
         final_cols = [col for col in display_cols if col in history_df.columns]
         history_df = history_df[final_cols]
         
-        # [★경고 수정★] use_container_width=True -> width='stretch'
         st.dataframe(history_df.style.format({
             'price': '{:,.0f}',
             'volume': '{:.8f}',
             'profit': '{:,.0f}',
             'avg_buy_price': '{:,.0f}'
-        }), width='stretch', height=500)
+        }), use_container_width=True, height=500)
 
 
 # --- [탭 5: 투자 보고서] ---
@@ -686,15 +684,13 @@ with tab_report:
             st.markdown("---")
             st.markdown("#### 🪙 코인별 실현 손익")
             profit_by_ticker = history_df.groupby('ticker')['profit'].sum().sort_values(ascending=False)
-            # [★경고 수정★] use_container_width=True -> width='stretch'
-            st.dataframe(profit_by_ticker.apply(lambda x: f"{x:,.0f} 원"), width='stretch')
+            st.dataframe(profit_by_ticker.apply(lambda x: f"{x:,.0f} 원"), use_container_width=True)
             
             st.markdown("---")
             st.markdown("#### 🧭 전략별 실현 손익 (매도 사유 기준)")
             if 'reason' in sells.columns:
                 profit_by_reason = sells.groupby('reason')['profit'].sum().sort_values(ascending=False)
-                # [★경고 수정★] use_container_width=True -> width='stretch'
-                st.dataframe(profit_by_reason.apply(lambda x: f"{x:,.0f} 원"), width='stretch')
+                st.dataframe(profit_by_reason.apply(lambda x: f"{x:,.0f} 원"), use_container_width=True)
             else:
                 st.caption("매도 사유(reason) 데이터가 없습니다.")
         else:
@@ -710,7 +706,7 @@ with tab_risk_analysis:
         st.session_state.pnl_df = None
 
     # [★수정 6★]
-    if st.button("🔄 전체 로그 분석 실행", width='stretch'):
+    if st.button("🔄 전체 로그 분석 실행", use_container_width=True):
         with st.spinner("logs/ 폴더의 모든 로그 파일을 분석 중입니다... (데이터 양에 따라 시간이 걸릴 수 있음)"):
             try:
                 st.session_state.pnl_df = log_analyzer.parse_pnl_logs()
@@ -811,8 +807,7 @@ def update_live_data(bot, chart_ph, position_ph, indicator_ph):
                 height=450,
                 margin=dict(l=20, r=20, t=40, b=20)
             )
-            # [★Plotly 경고 수정★] use_container_width 제거 → width='stretch'로 변경
-            st.plotly_chart(fig, width='stretch')
+            st.plotly_chart(fig, use_container_width=True)
             
         # 3. 보유 현황 업데이트
         position = bot.positions.get(ticker_to_chart, {})

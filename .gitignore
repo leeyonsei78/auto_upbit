@@ -1,0 +1,20 @@
+# API 키 및 개인 설정 (config.example.json을 복사해서 사용)
+config.json
+**/config.json
+Key.txt
+**/Key.txt
+
+# 개인 거래 내역 / 로그 (민감한 거래 데이터)
+trade_history.json
+**/trade_history.json
+logs/
+**/logs/
+
+# Python
+__pycache__/
+**/__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db

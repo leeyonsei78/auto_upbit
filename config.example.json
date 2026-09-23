@@ -1,0 +1,154 @@
+{
+    "ACCESS_KEY": "",
+    "SECRET_KEY": "",
+    "TICKERS": [
+        "KRW-BTC",
+        "KRW-SOL",
+        "KRW-XRP",
+        "KRW-ETH"
+    ],
+    "BUY_AMOUNT_KRW": 15000,
+    "TIME_INTERVAL": "minute60",
+    "MAX_TRADES_PER_DAY": 10,
+    "SELL_METHOD": "ratio",
+    "SELL_RATIO": 5.0,
+    "USE_HIGHER_AVG_DOWN_SCORE": true,
+    "AVG_DOWN_SCORE_MULTIPLIER": 1.1,
+    "USE_PROFIT_TAKE": true,
+    "PROFIT_TAKE_PERCENT": 20.0,
+    "USE_AUTO_STOP_LOSS_SELL": true,
+    "LOSS_CUT_PERCENT": -14.99999999999999,
+    "USE_PARTIAL_STOP_LOSS": true,
+    "PARTIAL_STOP_LOSS_RATIO": 5.0,
+    "VOLATILITY_STOP_PERCENT": -100.0,
+    "USE_TRAILING_STOP": true,
+    "TRAILING_STOP_PERCENT": 5.0,
+    "USE_ATR_SLTP": true,
+    "USE_MFI_SCORE": true,
+    "OBV_MA_PERIOD": 20,
+    "USE_OBV_SCORE": true,
+    "USE_FUNDING_RATE_FILTER": true,
+    "FUNDING_RATE_THRESHOLD": 0.075,
+    "USE_HTF_FILTER": true,
+    "USE_VOLATILITY_FILTER": true,
+    "ENTRY_COOLDOWN_HOURS": 3,
+    "MIN_HOLD_HOURS": 12,
+    "BUY_PROTECTION_HOURS": 6,
+    "USE_LIQUIDITY_FILTER": false,
+    "USE_EMA_TREND_SCORE": true,
+    "EMA_TREND_PERIOD": 50,
+    "EMA_TREND_SCORE_WEIGHT": 15,
+    "HTF_INTERVALS": [
+        "minute240"
+    ],
+    "FEE_FACTOR": 0.001,
+    "USE_DYNAMIC_SIZING": false,
+    "RISK_PER_TRADE_PERCENT": 1.0,
+    "MAX_BUY_RATIO_PER_TRADE": 0.25,
+    "RECOMMEND_TOP_PERCENTAGE": 20,
+    "SCORE_THRESHOLDS": {
+        "BUY": 70,
+        "SELL": 90
+    },
+    "STRATEGY_WEIGHTS_BY_COIN": {
+        "default": {
+            "RSI_BUY_SCORE": 40,
+            "RSI_SELL_SCORE": 40,
+            "BBANDS_BUY_SCORE": 40,
+            "BBANDS_SELL_SCORE": 40,
+            "MACD_BUY_SCORE": 20,
+            "MACD_SELL_SCORE": 20,
+            "STOCH_BUY_SCORE": 30,
+            "STOCH_SELL_SCORE": 30,
+            "VOLUME_BUY_SCORE": 25,
+            "VOLUME_SELL_SCORE": 0,
+            "MFI_BUY_SCORE": 15,
+            "MFI_SELL_SCORE": 15,
+            "OBV_BUY_SCORE": 10,
+            "OBV_SELL_SCORE": 10,
+            "FUNDING_RATE_SELL_SCORE": 20,
+            "MACD_HIST_REVERSAL_SCORE": 25,
+            "RECENT_LOW_SCORE": 15
+        },
+        "KRW-BTC": {
+            "RSI_BUY_SCORE": 50,
+            "MFI_BUY_SCORE": 5,
+            "FUNDING_RATE_SELL_SCORE": 30
+        },
+        "KRW-SOL": {
+            "RSI_BUY_SCORE": 10,
+            "MACD_BUY_SCORE": 10,
+            "MFI_BUY_SCORE": 30
+        },
+        "KRW-ETH": {}
+    },
+    "STRATEGY_THRESHOLDS": {
+        "RSI_LOW": 30.0,
+        "RSI_HIGH": 70.0,
+        "STOCH_LOW": 20.0,
+        "STOCH_HIGH": 80.0,
+        "VOLUME_SPIKE_MULTIPLIER": 1.5,
+        "VOLUME_MA_PERIOD": 20,
+        "MAX_SPREAD_PERCENT": 0.5,
+        "MIN_ORDERBOOK_DEPTH_KRW": 1000000,
+        "MIN_ATR_PERCENT": 0.3,
+        "MIN_VOLUME_RATIO": 0.3,
+        "ATR_SL_MULTIPLIER": 2.0,
+        "ATR_TP_MULTIPLIER": 3.0,
+        "MIN_REWARD_RISK_RATIO": 1.1999999999999997,
+        "MFI_HIGH": 80.0,
+        "MFI_LOW": 20.0
+    },
+    "DYNAMIC_WEIGHT_ADJUSTMENT": {
+        "enabled": true,
+        "volatility_threshold": 3.0,
+        "low_volatility_threshold": 1.0,
+        "high_volatility_multipliers": {
+            "ATR_BUY_SCORE": 1.5,
+            "ATR_SELL_SCORE": 1.5,
+            "RSI_BUY_SCORE": 0.8,
+            "RSI_SELL_SCORE": 0.8,
+            "BBANDS_BUY_SCORE": 1.2,
+            "BBANDS_SELL_SCORE": 1.2,
+            "MACD_BUY_SCORE": 1.1,
+            "MACD_SELL_SCORE": 1.1,
+            "STOCH_BUY_SCORE": 0.9,
+            "STOCH_SELL_SCORE": 0.9
+        },
+        "low_volatility_multipliers": {
+            "RSI_BUY_SCORE": 1.2,
+            "RSI_SELL_SCORE": 1.2,
+            "STOCH_BUY_SCORE": 1.2,
+            "STOCH_SELL_SCORE": 1.2,
+            "ATR_BUY_SCORE": 0.7,
+            "ATR_SELL_SCORE": 0.7,
+            "MACD_BUY_SCORE": 1.1,
+            "MACD_SELL_SCORE": 1.1
+        },
+        "volume_spike_multipliers": {
+            "VOLUME_BUY_SCORE": 1.3,
+            "VOLUME_SELL_SCORE": 1.3
+        },
+        "trend_strength_multipliers": {
+            "strong_trend_threshold": 25.0,
+            "weak_trend_threshold": 20.0,
+            "strong_trend": {
+                "ADX_BUY_SCORE": 1.5,
+                "ADX_SELL_SCORE": 1.5,
+                "EMA_TREND_SCORE": 1.3,
+                "SUPERTREND_BUY_SCORE": 1.4,
+                "SUPERTREND_SELL_SCORE": 1.4
+            },
+            "weak_trend": {
+                "ADX_BUY_SCORE": 0.7,
+                "ADX_SELL_SCORE": 0.7,
+                "RSI_BUY_SCORE": 1.2,
+                "RSI_SELL_SCORE": 1.2,
+                "STOCH_BUY_SCORE": 1.2,
+                "STOCH_SELL_SCORE": 1.2
+            }
+        }
+    },
+    "SHOW_FEATURE_CONTRIBUTIONS": true,
+    "SHOW_PATTERN_INFO": true
+}
